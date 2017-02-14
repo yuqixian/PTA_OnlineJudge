@@ -1,42 +1,50 @@
-## 4-1 简单输出整数  
-本题要求实现一个函数，对给定的正整数N，打印从*1*到*N*的全部正整数。
-    void PrintN ( int N );
-其中N是用户传入的参数。该函数必须将从1到N的全部正整数顺序打印出来，每个数字占1行。
+## 4-2 多项式求值   
+本题要求实现一个函数，计算阶数为n，系数为*a[0] ... a[n]*的多项式f(x)=\sum_{i=0}^{n}(a[i]\times x^i)f(x)=∑
+​i=0
+​n
+​​ (a[i]×x
+​i
+​​ ) 在x点的值。
 
-裁判测试程序样例：
+## 函数接口定义： ##
+    
+    double f( int n, double a[], double x );
+其中n是多项式的阶数，a[]中存储系数，x是给定点。函数须返回多项式f(x)的值。
+
+## 裁判测试程序样例： ##
 
     #include <stdio.h>
     
-    void PrintN ( int N );
+    #define MAXN 10
     
-    int main ()
+    double f( int n, double a[], double x );
+    
+    int main()
     {
-    int N;
-    
-    scanf("%d", &N);
-    PrintN( N );
-    
+    int n, i;
+    double a[MAXN], x;
+    				
+    scanf("%d %lf", &n, &x);
+    for ( i=0; i<=n; i++ )
+    scanf(“%lf”, &a[i]);
+    printf("%.1f\n", f(n, a, x));
     return 0;
     }
-  
+
 /* 你的代码将被嵌在这里 */
-
-输入样例：
-    
-    3
-输出样例：
-
-    1
-    2
-    3
+## 输入样例： ##
+    2 1.1
+    1 2.5 -38.7
+##输出样例：
+	-43.1
     
 
 ##my code 
-	void PrintN ( int N ){
-	    
-	    int i;
-	    for (i = 1; i <= N; i++)
-	    {
-	        printf("%d\n", i);
-	    }
+	#include <math.h>
+	double f( int n, double a[], double x )
+	{
+	    double sum = 0;   
+	    for(int i=0; i<=n; i++)
+	    	sum += a[i]*pow(x,i);          
+	    return sum;
 	}
