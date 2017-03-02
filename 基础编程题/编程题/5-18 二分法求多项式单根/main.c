@@ -15,7 +15,7 @@ int main()
 	
 	left = a;
 	right = b;
-	while(right - left >= 0.001 &&  fx(left)*fx(right) <= 0 )
+	while(right - left >= 0.0001 &&  fx(left)*fx(right) <= 0 )
 	{
 		if( fx(left)==0 || fx(right)==0 )
 		{
@@ -37,7 +37,7 @@ int main()
 		
 	}
 	
-	printf("%.2f", ans)	;
+	printf("%.2f", mid)	;
 	return 0;
 }
 
