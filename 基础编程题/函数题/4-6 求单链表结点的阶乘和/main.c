@@ -6,6 +6,7 @@ struct Node {
     int Data; /* 存储结点数据 */
     PtrToNode Next; /* 指向下一个结点的指针 */
 };
+
 typedef PtrToNode List; /* 定义单链表类型 */
 
 int FactorialSum( List L );
@@ -29,6 +30,16 @@ int main()
 
 int FactorialSum( List L )
 {
-	return ;
-}
 
+	int sum = 0;
+	while( L != NULL)
+	{
+		int temp = 1;
+		for(int i=1; i<=L->Data; i++)
+			temp *= i;
+		sum += temp;
+		L = L->Next;
+	}
+	
+	return sum;
+}
