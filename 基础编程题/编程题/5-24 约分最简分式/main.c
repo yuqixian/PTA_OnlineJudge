@@ -1,23 +1,29 @@
 #include<stdio.h>
 
+int maxCom(int a, int b);
+
 int main()
 {
-	int t, flag = 0;
-	int turtle, rabbit;
-	
-	scanf("%d", &t);
-	for(int i=0; i<t; i++)
-	{
-		turtle += 3;
-		if( flag==0 && i%10 ==0 && rabbit>turtle)
-			flag = 30;
-		if(flag == 0)	rabbit += 9;
-		else	flag--;
-	}
-	
-	if (turtle > rabbit)	printf("@_@ %d", turtle);
-	else if (turtle < rabbit) printf("^_^ %d", rabbit);
-	else 	printf("-_- %d", rabbit);
+	int up, down;
+	int com;
+	scanf("%d/%d", &up, &down);
+	com = maxCom(up, down);
+	up /= com;
+	down /= com;
+	printf("%d/%d", up, down);
 	
 	return 0;
+}
+
+int maxCom(int a, int b)
+{
+	int max = 1;
+	int min = a>b?a:b;
+	for(int i=1 ; i<=min; i++)
+	{
+		if(a%i==0 && b%i==0)
+			max = i;
+	}
+	
+	return max;
 }
